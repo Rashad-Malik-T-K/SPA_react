@@ -14,7 +14,7 @@ const Login = () => {
 
     if (email === testUser.email && password === testUser.password) {
       localStorage.setItem('token', 'fake-jwt-token');
-      navigate('/Dashboard');
+      navigate('/Home');
     } else {
       setError('Invalid credentials');
     }

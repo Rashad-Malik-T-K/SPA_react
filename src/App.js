@@ -11,6 +11,11 @@ import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import About from './pages/About';
 import Help from './pages/Help';
+import Home from './pages/Home';
+import Hero from './components/Hero';
+import Services from './components/Services';
+import Features from './components/Features';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -18,6 +23,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/Home" element={<Home/>} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/verify" element={<Verify />} />

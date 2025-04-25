@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Import Link
+import { useNavigate, Link } from 'react-router-dom';
+import './Dashboard.css'; // Import Link
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
+    <div className='dashboard-container'>
       <h1>Welcome to Dashboard</h1>
       <p>Main interface after login</p>
       <nav>
