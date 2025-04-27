@@ -12,10 +12,8 @@ import Settings from './pages/Settings';
 import About from './pages/About';
 import Help from './pages/Help';
 import Home from './pages/Home';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import Features from './components/Features';
-import Footer from './components/Footer';
+import StudentInput from './pages/StudentInput';
+import TeacherInput from './pages/TeacherInput'; // New import
 
 const App = () => {
   return (
@@ -34,6 +32,8 @@ const App = () => {
         <Route path="/settings" element={<Settings />} />
         <Route path="/about" element={<About />} />
         <Route path="/help" element={<Help />} />
+        <Route path="/student-input" element={<StudentInput />} />
+        <Route path="/teacher-input" element={<TeacherInput />} />
       </Routes>
     </Router>
   );
