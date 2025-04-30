@@ -166,12 +166,12 @@
 // };
 
 // export default StudentInput;
-
 import React, { useState } from "react";
 import "./input.css";
 import { useNavigate } from 'react-router-dom';
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import axios from 'axios';
 
 const initialState = {
   school: "",
@@ -208,6 +208,18 @@ const initialState = {
 
 const StudentInput = () => {
   const navigate = useNavigate();
+
+  const handlePredict = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:5000/predict', formData);
+      const prediction = response.data.prediction;
+      navigate('/prediction', { state: { prediction } });
+    } catch (err) {
+      alert("Prediction failed: " + err.message);
+    }
+  };
+
   const [formData, setFormData] = useState(initialState);
 
   const handleBack = (e) => {
@@ -263,8 +275,8 @@ const StudentInput = () => {
       </select>
       <select name="sex" value={formData.sex} onChange={handleChange}>
         <option value="">Select Sex</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
       </select>
       <input type="number" name="age" placeholder="Age" min="10" max="25" value={formData.age} onChange={handleChange} />
       <select name="address" value={formData.address} onChange={handleChange}>
@@ -284,10 +296,35 @@ const StudentInput = () => {
       </select>
       <input type="number" name="Medu" placeholder="Mother's Education" value={formData.Medu} onChange={handleChange} />
       <input type="number" name="Fedu" placeholder="Father's Education" value={formData.Fedu} onChange={handleChange} />
-      <input type="text" name="Mjob" placeholder="Mother's Job" value={formData.Mjob} onChange={handleChange} />
-      <input type="text" name="Fjob" placeholder="Father's Job" value={formData.Fjob} onChange={handleChange} />
-      <input type="text" name="reason" placeholder="Reason" value={formData.reason} onChange={handleChange} />
-      <input type="text" name="guardian" placeholder="Guardian" value={formData.guardian} onChange={handleChange} />
+      <select name="Mjob" value={formData.Mjob} onChange={handleChange} required>
+        <option value="">Select Mother's Job</option>
+        <option value="teacher">Teacher</option>
+        <option value="health">Health</option>
+        <option value="services">Services</option>
+        <option value="at_home">At home</option>
+        <option value="other">Other</option>
+      </select>
+      <select name="Fjob" value={formData.Fjob} onChange={handleChange} required>
+        <option value="">Select Father's Job</option>
+        <option value="teacher">Teacher</option>
+        <option value="health">Health</option>
+        <option value="services">Services</option>
+        <option value="at_home">At home</option>
+        <option value="other">Other</option>
+      </select>
+      <select name="reason" value={formData.reason} onChange={handleChange} required>
+        <option value="">Select Reason</option>
+        <option value="home">Home</option>
+        <option value="reputation">Reputation</option>
+        <option value="course">Course</option>
+        <option value="other">Other</option>
+      </select>
+      <select name="guardian" value={formData.guardian} onChange={handleChange} required>
+        <option value="">Select Guardian</option>
+        <option value="mother">Mother</option>
+        <option value="father">Father</option>
+        <option value="other">Other</option>
+      </select>
       <input type="number" name="traveltime" placeholder="Travel Time" value={formData.traveltime} onChange={handleChange} />
       <input type="number" name="studytime" placeholder="Study Time" value={formData.studytime} onChange={handleChange} />
       <input type="number" name="failures" placeholder="Failures" value={formData.failures} onChange={handleChange} />
@@ -339,7 +376,8 @@ const StudentInput = () => {
       <input type="number" name="G1" placeholder="Test 1 score" value={formData.G1} onChange={handleChange} />
       <input type="number" name="G2" placeholder="Test 2 score" value={formData.G2} onChange={handleChange} />
 
-      <button type="submit">Predict</button>
+      <button type="button" onClick={handlePredict}>Predict</button>
+      <button type="submit">Save to dashboard</button>
       <button onClick={handleBack}>Back to Dashboard</button>
     </form>
   );
