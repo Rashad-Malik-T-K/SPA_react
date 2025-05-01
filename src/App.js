@@ -14,6 +14,7 @@ import Help from './pages/Help';
 import Home from './pages/Home';
 import StudentInput from './pages/StudentInput';
 import TeacherInput from './pages/TeacherInput'; // New import
+import Prediction from './pages/Prediction';
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/help" element={<Help />} />
         <Route path="/student-input" element={<StudentInput />} />
         <Route path="/teacher-input" element={<TeacherInput />} />
+        <Route path="/prediction" element={<Prediction />} />
       </Routes>
     </Router>
   );
