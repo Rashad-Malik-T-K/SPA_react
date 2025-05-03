@@ -1,30 +1,47 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { auth, db } from '../firebase'; // Ensure Firestore is imported
+import { doc, getDoc } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
 import './Dashboard.css';
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('dashboard');
   const [username, setUsername] = useState('User');
+  const [role, setRole] = useState(''); // State to store the user's role
+  const [loading, setLoading] = useState(true); // State to track loading
 
   useEffect(() => {
-    // Check authentication
-    const token = localStorage.getItem('token');
-    if (!token) {
-      navigate('/login');
-      return;
-    }
-    
-    // You would typically fetch user data here
-    // For now, we'll just use a placeholder
-    // setUsername('John Doe');
+    // Check authentication and fetch user data
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        try {
+          const userDocRef = doc(db, 'users', user.uid);
+          const userDoc = await getDoc(userDocRef);
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
+            setUsername(userData.name || 'User');
+            setRole(userData.role || ''); // Set the user's role
+          }
+        } catch (err) {
+          console.error('Error fetching user data:', err.message);
+        }
+      } else {
+        navigate('/login'); // Redirect to login if not authenticated
+      }
+      setLoading(false); // Set loading to false after fetching data
+    });
+
+    // Cleanup the listener on component unmount
+    return () => unsubscribe();
   }, [navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
   };
-      // Back to Home button 
+
   const handleBack = () => {
     navigate('/Home'); // Navigate to the Home page
   };
@@ -37,7 +54,8 @@ const Dashboard = () => {
   const IconLayout = () => <span className="icon">📊</span>;
   const IconLogout = () => <span className="icon">🚪</span>;
 
-  const menuItems = [
+  // Define all menu items
+  const allMenuItems = [
     { name: 'Dashboard', icon: <IconLayout />, link: '/dashboard', id: 'dashboard' },
     { name: 'Profile', icon: <IconUser />, link: '/profile', id: 'profile' },
     { name: 'Student Input', icon: <IconBook />, link: '/Student-input', id: 'student-input' },
@@ -46,6 +64,21 @@ const Dashboard = () => {
     { name: 'Teacher Dashboard', icon: <IconUsers />, link: '/teacher-dashboard', id: 'teacher-dashboard' },
     { name: 'Settings', icon: <IconSettings />, link: '/settings', id: 'settings' },
   ];
+
+  // Filter menu items based on role
+  const menuItems = role === 'admin'
+  ? allMenuItems // Admin can see all menu items
+  : role === 'teacher'
+  ? allMenuItems.filter(item =>
+      ['Teacher Input', 'Student Dashboard', 'Teacher Dashboard','Settings', 'Profile'].includes(item.name)
+    )
+  : allMenuItems.filter(item =>
+      item.name !== 'Teacher Input' // Exclude 'Teacher Input' for non-teacher roles
+    );
+
+  if (loading) {
+    return <div>Loading...</div>; // Show a loading indicator while fetching data
+  }
 
   return (
     <div className="dashboard-layout">
@@ -77,22 +110,16 @@ const Dashboard = () => {
       <div className="main-content">
         <div className="top-bar">
           <div className="breadcrumb">Dashboard</div>
-          {/* <div className="user-info">
-            <span className="welcome-text">Welcome, {username}</span>
-            <div className="user-avatar">
-              <IconUser />
-            </div>
-          </div> */}
           <div>
             <button onClick={handleBack}>Back to Home</button>
-            </div>
+          </div>
         </div>
 
         <div className="dashboard-content">
           <div className="welcome-card">
-            <h1>Welcome to Your Dashboard</h1>
-            <p>Access all your educational tools and resources from this central interface.</p>
-          </div>  
+            <h1>Welcome to the Student Performance Analytics </h1>
+            <p>Powered by machine learning, this platform provides real-time insights to track student progress and support data-driven decisions for academic success.</p>
+          </div>
         </div>
       </div>
     </div>

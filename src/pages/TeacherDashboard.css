@@ -1,0 +1,87 @@
+.teacher-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #2c3e50, #4a5568);
+    padding: 2rem;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .dashboard-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  .back-button {
+    padding: 0.75rem 2rem;
+    background: linear-gradient(to right, #2563eb, #1d4ed8);
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 2rem;
+  }
+  
+  .back-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  .back-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .loading-text,
+  .no-reports-text {
+    font-size: 1.2rem;
+    color: #e2e8f0;
+  }
+  
+  .table-container {
+    width: 100%;
+    max-width: 1200px;
+    overflow-x: auto;
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 1rem;
+  }
+  
+  .styled-table th,
+  .styled-table td {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+  }
+  
+  .styled-table th {
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  .styled-table tr:nth-child(even) {
+    background: #f3f4f6;
+  }
+  
+  .styled-table tr:hover {
+    background: #e2e8f0;
+  }
+  
+  .styled-table td {
+    color: #333;
+  }

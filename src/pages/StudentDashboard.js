@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './StudentDashboard.css'; // Import the CSS file
+
 const StudentDashboard = () => {
   const navigate = useNavigate();
 
@@ -8,47 +10,15 @@ const StudentDashboard = () => {
   };
 
   return (
-    <div style={{ 
-      display: 'flex', 
-      flexDirection: 'column', 
-      alignItems: 'center', 
-      justifyContent: 'center',
-      minHeight: '100vh', 
-      textAlign: 'center'
-    }}>
-      <h1>Student Dashboard</h1>
-      <p>This is a blank Student Dashboard page.</p>
-      <iframe 
-        width="600" 
-        height="450" 
-        src="https://lookerstudio.google.com/embed/reporting/0f4d75f4-a19f-4a19-b7e7-1708d7d70d83/page/NuMIF" 
-        frameBorder="0">
-      </iframe>
-      <button onClick={handleBack}>Back to Dashboard</button>
+    <div className="student-dashboard-container">
+      <h1 className="dashboard-title">Student Dashboard</h1>
+      <p className="dashboard-description">View your performance and insights below:</p>
+      <div className="dashboard-iframe-container">
+      <iframe width="600" height="600" src="https://lookerstudio.google.com/embed/reporting/1a6441d8-d592-420a-835a-d886f4f2405a/page/WIrIF" frameborder="0" ></iframe>
+      </div>
+      <button className="back-button" onClick={handleBack}>Back to Dashboard</button>
     </div>
-    
   );
 };
 
 export default StudentDashboard;
-
-// import React from 'react';
-// import { useNavigate } from 'react-router-dom';
-
-// const StudentDashboard = () => {
-//   const navigate = useNavigate();
-
-//   const handleBack = () => {
-//     navigate('/dashboard'); // Back to main Dashboard
-//   };
-
-//   return (
-//     <div>
-//       <h1>Student Dashboard</h1>
-//       <p>This is a blank Student Dashboard page.</p>
-//       <button onClick={handleBack}>Back to Dashboard</button>
-//     </div>
-//   );
-// };
-
-// export default StudentDashboard;
