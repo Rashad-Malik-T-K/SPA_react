@@ -185,7 +185,10 @@
 // };
 
 // export default Login;
+// src/Login.js
+// ... existing code ...
 
+// ... existing imports ...
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
@@ -203,12 +206,16 @@ function Login() {
     setError("");
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      // Redirect to dashboard after successful login
-      navigate("/dashboard");
+      const user = userCredential.user;
+      const token = await user.getIdToken();
+  
+      localStorage.setItem('token', token); // Store token to match dashboard check
+      navigate("/dashboard"); // Redirect to dashboard
     } catch (err) {
       setError(err.message);
     }
   };
+  
 
   return (
     <div className="login-container">
@@ -237,4 +244,3 @@ function Login() {
 }
 
 export default Login;
-
