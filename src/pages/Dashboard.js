@@ -8,7 +8,7 @@ import './Dashboard.css';
 const Dashboard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [username, setUsername] = useState('User');
+  const [setUsername] = useState('User');
   const [role, setRole] = useState(''); // State to store the user's role
   const [loading, setLoading] = useState(true); // State to track loading
 
