@@ -8,9 +8,17 @@ import './Dashboard.css';
 const Dashboard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [setUsername] = useState('User');
+  const [username, setUsername] = useState('User');
   const [role, setRole] = useState(''); // State to store the user's role
   const [loading, setLoading] = useState(true); // State to track loading
+
+  <div className="top-bar">
+  <div className="breadcrumb">Dashboard</div>
+  <div>
+    <span className="username">Welcome, {username}</span>
+    <button onClick={handleBack}>Back to Home</button>
+  </div>
+</div>
 
   useEffect(() => {
     // Check authentication and fetch user data
