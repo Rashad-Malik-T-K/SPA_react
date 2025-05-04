@@ -16,7 +16,6 @@ const Dashboard = () => {
   <div className="breadcrumb">Dashboard</div>
   <div>
     <span className="username">Welcome, {username}</span>
-    <button onClick={handleBack}>Back to Home</button>
   </div>
 </div>
 
