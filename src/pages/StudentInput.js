@@ -112,26 +112,21 @@ const StudentInput = () => {
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="sex">Sex</label>
+            <label htmlFor="sex">Gender</label>
             <select id="sex" name="sex" value={formData.sex} onChange={handleChange} required>
-              <option value="">Select Sex</option>
+              <option value="">Select Gender</option>
               <option value="M">Male</option>
               <option value="F">Female</option>
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="age">Age</label>
-            <input
-              type="number"
-              id="age"
-              name="age"
-              placeholder="Age"
-              min="10"
-              max="25"
-              value={formData.age}
-              onChange={handleChange}
-              required
-            />
+          <label htmlFor="age">Age (10-25)</label>
+            <select id="age" name="age" value={formData.age} onChange={handleChange} required>
+            <option value="">Select Age</option>
+            {Array.from({ length: 16 }, (_, i) => (
+            <option key={i + 10} value={i + 10}>{i + 10}</option>
+            ))}
+            </select>
           </div>
           <div className="form-group">
             <label htmlFor="address">Address</label>
@@ -165,32 +160,26 @@ const StudentInput = () => {
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="Medu">Mother's Education (0-4)</label>
-            <input
-              type="number"
-              id="Medu"
-              name="Medu"
-              placeholder="Mother's Education"
-              min="0"
-              max="4"
-              value={formData.Medu}
-              onChange={handleChange}
-              required
-            />
+             <label htmlFor="Medu">Mother's Education (0-4)</label>
+             <select id="Medu" name="Medu" value={formData.Medu} onChange={handleChange} required>
+               <option value="">Select Mother's Education</option>
+               <option value="0">0 - None</option>
+               <option value="1">1 - Primary</option>
+               <option value="2">2 - Middle School</option>
+               <option value="3">3 - High School</option>
+               <option value="4">4 - Higher Education</option>
+             </select>
           </div>
           <div className="form-group">
             <label htmlFor="Fedu">Father's Education (0-4)</label>
-            <input
-              type="number"
-              id="Fedu"
-              name="Fedu"
-              placeholder="Father's Education"
-              min="0"
-              max="4"
-              value={formData.Fedu}
-              onChange={handleChange}
-              required
-            />
+            <select id="Fedu" name="Fedu" value={formData.Fedu} onChange={handleChange} required>
+              <option value="">Select Father's Education</option>
+              <option value="0">0 - None</option>
+              <option value="1">1 - Primary</option>
+              <option value="2">2 - Middle School</option>
+              <option value="3">3 - High School</option>
+              <option value="4">4 - Higher Education</option>
+            </select>
           </div>
           <div className="form-group">
             <label htmlFor="Mjob">Mother's Job</label>
@@ -224,18 +213,15 @@ const StudentInput = () => {
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="famrel">Family Relationship (1-5)</label>
-            <input
-              type="number"
-              id="famrel"
-              name="famrel"
-              placeholder="Family Relationship"
-              min="1"
-              max="5"
-              value={formData.famrel}
-              onChange={handleChange}
-              required
-            />
+           <label htmlFor="famrel">Family Relationship (1-5)</label>
+           <select id="famrel" name="famrel" value={formData.famrel} onChange={handleChange} required>
+             <option value="">Select Family Relationship</option>
+             <option value="1">1 - Very Bad</option>
+             <option value="2">2 - Bad</option>
+             <option value="3">3 - Neutral</option>
+             <option value="4">4 - Good</option>
+             <option value="5">5 - Very Good</option>
+           </select>
           </div>
         </div>
       </div>
@@ -256,45 +242,34 @@ const StudentInput = () => {
           </div>
           <div className="form-group">
             <label htmlFor="traveltime">Travel Time (1-4)</label>
-            <input
-              type="number"
-              id="traveltime"
-              name="traveltime"
-              placeholder="Travel Time"
-              min="1"
-              max="4"
-              value={formData.traveltime}
-              onChange={handleChange}
-              required
-            />
+            <select id="traveltime" name="traveltime" value={formData.traveltime} onChange={handleChange} required>
+              <option value="">Select Travel Time</option>
+              <option value="1">1 - 0-15 min</option>
+              <option value="2">2 - 15-30 min</option>
+              <option value="3">3 - 30-60 min</option>
+              <option value="4">4 - 60 min</option>
+            </select>
           </div>
           <div className="form-group">
             <label htmlFor="studytime">Study Time (1-4)</label>
-            <input
-              type="number"
-              id="studytime"
-              name="studytime"
-              placeholder="Study Time"
-              min="1"
-              max="4"
-              value={formData.studytime}
-              onChange={handleChange}
-              required
-            />
+              <select id="studytime" name="studytime" value={formData.studytime} onChange={handleChange} required>
+                <option value="">Select Study Time</option>
+                <option value="1">1 - 0-2 hours</option>
+                <option value="2">2 - 2-5 hours</option>
+                <option value="3">3 - 5-10 hours</option>
+                <option value="4">4 - Above 10 hours</option>
+              </select>
           </div>
           <div className="form-group">
             <label htmlFor="failures">Past Failures (0-4)</label>
-            <input
-              type="number"
-              id="failures"
-              name="failures"
-              placeholder="Failures"
-              min="0"
-              max="4"
-              value={formData.failures}
-              onChange={handleChange}
-              required
-            />
+             <select id="failures" name="failures" value={formData.failures} onChange={handleChange} required>
+               <option value="">Select Past Failures</option>
+               <option value="0">0 - None</option>
+               <option value="1">1 - One</option>
+               <option value="2">2 - Two</option>
+               <option value="3">3 - Three</option>
+               <option value="4">4 - Four or more</option>
+             </select>
           </div>
           <div className="form-group">
             <label htmlFor="schoolsup">School Support</label>
@@ -330,32 +305,22 @@ const StudentInput = () => {
           </div>
           <div className="form-group">
             <label htmlFor="G1">Test 1 Score (0-20)</label>
-            <input
-              type="number"
-              id="G1"
-              name="G1"
-              placeholder="Test 1 Score"
-              min="0"
-              max="20"
-              value={formData.G1}
-              onChange={handleChange}
-              required
-            />
+            <select id="G1" name="G1" value={formData.G1} onChange={handleChange} required>
+              <option value="">Select Test 1 Score</option>
+                {Array.from({ length: 21 }, (_, i) => (
+              <option key={i} value={i}>{i}</option>
+               ))}
+            </select>
           </div>
           <div className="form-group">
             <label htmlFor="G2">Test 2 Score (0-20)</label>
-            <input
-              type="number"
-              id="G2"
-              name="G2"
-              placeholder="Test 2 Score"
-              min="0"
-              max="20"
-              value={formData.G2}
-              onChange={handleChange}
-              required
-            />
-          </div>
+            <select id="G2" name="G2" value={formData.G2} onChange={handleChange} required>
+              <option value="">Select Test 2 Score</option>
+              {Array.from({ length: 21 }, (_, i) => (
+              <option key={i} value={i}>{i}</option>
+              ))}
+            </select>
+        </div>
         </div>
       </div>
 
@@ -397,60 +362,48 @@ const StudentInput = () => {
           </div>
           <div className="form-group">
             <label htmlFor="freetime">Free Time (1-5)</label>
-            <input
-              type="number"
-              id="freetime"
-              name="freetime"
-              placeholder="Free Time"
-              min="1"
-              max="5"
-              value={formData.freetime}
-              onChange={handleChange}
-              required
-            />
+            <select id="freetime" name="freetime" value={formData.freetime} onChange={handleChange} required>
+              <option value="">Select Free Time</option>
+              <option value="1">1 - Very Low</option>
+              <option value="2">2 - Low</option>
+              <option value="3">3 - Neutral</option>
+              <option value="4">4 - High</option>
+              <option value="5">5 - Very High</option>
+           </select>
           </div>
+
           <div className="form-group">
-            <label htmlFor="goout">Going Out Frequency (1-5)</label>
-            <input
-              type="number"
-              id="goout"
-              name="goout"
-              placeholder="Going Out Frequency"
-              min="1"
-              max="5"
-              value={formData.goout}
-              onChange={handleChange}
-              required
-            />
+             <label htmlFor="goout">Going Out Frequency (1-5)</label>
+             <select id="goout" name="goout" value={formData.goout} onChange={handleChange} required>
+                <option value="">Select Going Out Frequency</option>
+                <option value="1">1 - Very Rarely</option>
+                <option value="2">2 - Rarely</option>
+                <option value="3">3 - Sometimes</option>
+                <option value="4">4 - Often</option>
+                <option value="5">5 - Very Often</option>
+                </select>
           </div>
+
           <div className="form-group">
             <label htmlFor="health">Health Status (1-5)</label>
-            <input
-              type="number"
-              id="health"
-              name="health"
-              placeholder="Health Status"
-              min="1"
-              max="5"
-              value={formData.health}
-              onChange={handleChange}
-              required
-            />
+            <select id="health" name="health" value={formData.health} onChange={handleChange} required>
+              <option value="">Select Health Status</option>
+              <option value="1">1 - Very Bad</option>
+              <option value="2">2 - Bad</option>
+              <option value="3">3 - Neutral</option>
+              <option value="4">4 - Good</option>
+              <option value="5">5 - Very Good</option>
+            </select>
           </div>
           <div className="form-group">
             <label htmlFor="absences">Absences (0-100)</label>
-            <input
-              type="number"
-              id="absences"
-              name="absences"
-              placeholder="Absences"
-              min="0"
-              max="100"
-              value={formData.absences}
-              onChange={handleChange}
-              required
-            />
-          </div>
+            <select id="absences" name="absences" value={formData.absences} onChange={handleChange} required>
+              <option value="">Select Absences</option>
+              {Array.from({ length: 101 }, (_, i) => (
+              <option key={i} value={i}>{i}</option>
+              ))}
+            </select>
+        </div>
         </div>
       </div>
 

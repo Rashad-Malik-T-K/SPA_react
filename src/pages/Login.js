@@ -19,7 +19,7 @@ function Login() {
       const token = await user.getIdToken();
   
       localStorage.setItem('token', token); // Store token to match dashboard check
-      navigate("/dashboard"); // Redirect to dashboard
+      navigate("/Home"); // Redirect to dashboard
     } catch (err) {
       setError(err.message);
     }

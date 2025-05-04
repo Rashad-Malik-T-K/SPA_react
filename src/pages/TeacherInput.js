@@ -54,7 +54,7 @@ function TeacherInput() {
 
   return (
     <div className="teacher-input-container">
-      <h2 className="title">Student Details</h2>
+      <h2 className="title">Student Details By Teacher</h2>
       <form className="teacher-form" onSubmit={handleSubmit}>
         <input
           type="text"

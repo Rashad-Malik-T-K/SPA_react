@@ -35,7 +35,7 @@ export default function AIStudentPerformance() {
                 fontWeight: "500",
               }}
             >
-              SPAS
+              QuBitAix
             </div>
         <div
           style={{
@@ -47,16 +47,17 @@ export default function AIStudentPerformance() {
           <a href="/Home" style={{ color: "white", textDecoration: "none" }}>
             Home
           </a>
-          <a href="/about" style={{ color: "white", textDecoration: "none" }}>
-            About Us
-          </a>
           <a
             href="/dashboard"
             style={{ color: "white", textDecoration: "none" }}
           >
             Dashboard
           </a>
-          <a href="/projects" style={{ color: "white", textDecoration: "none" }}>
+          <a href="/about" style={{ color: "white", textDecoration: "none" }}>
+            About Us
+          </a>
+          
+          <a href="/Contact" style={{ color: "white", textDecoration: "none" }}>
             Contact Us
           </a>
 
@@ -117,12 +118,13 @@ export default function AIStudentPerformance() {
                 opacity: "0.9",
               }}
             >
-              Transforming student performance with data-driven insights
+              Transforming Student Performance with Data-Driven Insights
             </p>
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+              
               <button
-               onClick={() => navigate("/about")} 
+                onClick={() => navigate("/Dashboard")}
                 style={{
                   padding: "0.75rem 2rem",
                   width: "250px",
@@ -134,21 +136,7 @@ export default function AIStudentPerformance() {
                   cursor: "pointer",
                 }}
               >
-                About Us
-              </button>
-              <button
-                style={{
-                  padding: "0.75rem 2rem",
-                  width: "250px",
-                  backgroundColor: "transparent",
-                  border: "2px solid white",
-                  color: "white",
-                  fontWeight: "500",
-                  borderRadius: "9999px",
-                  cursor: "pointer",
-                }}
-              >
-                Contact Us
+                Get Started
               </button>
             </div>
           </div>

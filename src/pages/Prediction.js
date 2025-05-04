@@ -1,7 +1,8 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Prediction() {
   const location = useLocation();
+  const navigate = useNavigate();
   const prediction = location.state?.prediction;
 
   const getMessage = () => {
@@ -29,6 +30,10 @@ function Prediction() {
     }
   };
 
+  const handleBackToDashboard = () => {
+    navigate('/dashboard'); // Navigate back to the dashboard
+  };
+
   return (
     <div style={styles.container}>
       <div style={styles.card}>
@@ -38,6 +43,9 @@ function Prediction() {
         ) : (
           <p style={styles.message}>No prediction available.</p>
         )}
+        <button style={styles.button} onClick={handleBackToDashboard}>
+          Back to Dashboard
+        </button>
       </div>
     </div>
   );
@@ -70,6 +78,20 @@ const styles = {
     fontSize: '18px',
     color: '#555',
     lineHeight: '1.5',
+  },
+  button: {
+    marginTop: '20px',
+    padding: '10px 20px',
+    fontSize: '16px',
+    color: '#ffffff',
+    backgroundColor: '#007bff',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+  },
+  buttonHover: {
+    backgroundColor: '#0056b3',
   },
 };
 
