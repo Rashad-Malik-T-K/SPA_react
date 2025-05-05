@@ -45,7 +45,7 @@ const StudentInput = () => {
   const handlePredict = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://backend-spa-7qqr.onrender.com/', formData);
+      const response = await axios.post('https://backend-spa-7qqr.onrender.com/predict', formData);
       const prediction = response.data.prediction;
       navigate('/prediction', { state: { prediction } });
     } catch (err) {
