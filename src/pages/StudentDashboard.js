@@ -14,13 +14,7 @@ const StudentDashboard = () => {
       <h1 className="dashboard-title">Student Dashboard</h1>
       {/* <p className="dashboard-description">View your performance and insights below:</p> */}
       <div className="dashboard-iframe-container">
-        <iframe
-          title="Student Performance Dashboard"
-          width="1250"
-          height="600"
-          src="https://lookerstudio.google.com/embed/reporting/1a6441d8-d592-420a-835a-d886f4f2405a/page/WIrIF"
-          frameBorder="0"
-        ></iframe>
+        <iframe title="Student Performance Dashboard" width="1250" height="600" src="https://lookerstudio.google.com/embed/reporting/575018ce-2436-42a0-9d2f-6b8ba6d508b8/page/n7MMF"   allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
       </div>
       <button className="back-button" onClick={handleBack}>Back to Dashboard</button>
     </div>
