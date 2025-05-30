@@ -8,6 +8,7 @@ const TeacherDashboard = () => {
   const navigate = useNavigate();
   const [studentReports, setStudentReports] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState(""); // State for search input
 
   useEffect(() => {
     const fetchStudentReports = async () => {
@@ -32,13 +33,28 @@ const TeacherDashboard = () => {
     navigate('/dashboard');
   };
 
+  // Filter reports based on search term
+  const filteredReports = studentReports.filter((report) =>
+    report.studentName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="teacher-dashboard-container">
       <h1 className="dashboard-title">Teacher Dashboard</h1>
 
+      {/* Search input */}
+      <input
+        type="text"
+        placeholder="Search by student name"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-input"
+        style={{ marginBottom: '16px', padding: '8px', width: '250px' }}
+      />
+
       {loading ? (
         <p className="loading-text">Loading student reports...</p>
-      ) : studentReports.length > 0 ? (
+      ) : filteredReports.length > 0 ? (
         <div className="table-container">
           <table className="styled-table">
             <thead>
@@ -53,7 +69,7 @@ const TeacherDashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {studentReports.map((report) => (
+              {filteredReports.map((report) => (
                 <tr key={report.id}>
                   <td>{report.studentName}</td>
                   <td>{report.course}</td>
@@ -72,9 +88,7 @@ const TeacherDashboard = () => {
       )}
       <button className="back-button" onClick={handleBack}>Back to Dashboard</button>
     </div>
-    
   );
-  
 };
 
 export default TeacherDashboard;

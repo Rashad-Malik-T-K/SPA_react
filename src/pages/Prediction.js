@@ -9,21 +9,21 @@ function Prediction() {
     if (prediction < 7) {
       return (
         <>
-          😟 <strong>You need to improve!</strong> Your prediction score is: <strong>{prediction}</strong>. 
+          😟 <strong>You need to improve!</strong> Out of "20" Your prediction score is: <strong>{prediction}</strong>. 
           Keep working hard, and you'll achieve better results next time!
         </>
       );
     } else if (prediction >= 7 && prediction < 14) {
       return (
         <>
-          😊 <strong>Good effort!</strong> Your prediction score is: <strong>{prediction}</strong>. 
+          😊 <strong>Good effort!</strong> Out of "20" Your prediction score is: <strong>{prediction}</strong>. 
           You're on the right track! Keep pushing forward to reach even greater heights!
         </>
       );
     } else {
       return (
         <>
-          🎉 <strong>Congratulations!</strong> Your prediction score is: <strong>{prediction}</strong>. 
+          🎉 <strong>Congratulations!</strong> Out of "20" Your prediction score is: <strong>{prediction}</strong>. 
           Excellent work! Keep up the outstanding performance!
         </>
       );
